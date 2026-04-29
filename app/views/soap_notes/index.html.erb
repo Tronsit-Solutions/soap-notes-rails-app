@@ -1,0 +1,125 @@
+<div class="mscribe-container" data-controller="soap-note">
+  <header class="mscribe-header">
+    <div class="mscribe-brand">
+      <h1>Medscribe <span class="badge">PRO</span></h1>
+    </div>
+    <div class="powered-by">
+      Powered by TronsIT Solutions
+    </div>
+  </header>
+
+  <div class="mscribe-grid">
+    <!-- Left Column: Voice Recording and Transcript -->
+    <div class="left-panel">
+      
+      <!-- VOICE RECORDING SECTION -->
+      <section class="panel-section mscribe-panel">
+        <h3 class="section-title">VOICE RECORDING</h3>
+        
+        <button data-action="click->soap-note#startRecording" class="indicator-btn" data-soap-note-target="recordBtn">
+          <span class="recording-dot" data-soap-note-target="recordDot"></span> 
+          <span data-soap-note-target="recordText">Ready to record</span>
+        </button>
+
+        <button data-action="click->soap-note#stopRecording" class="stop-btn hidden" data-soap-note-target="stopBtn">
+          <i></i> Stop recording
+        </button>
+      </section>
+
+      <!-- TRANSCRIPT SECTION -->
+      <section class="panel-section mscribe-panel">
+        <h3 class="section-title">TRANSCRIPT</h3>
+        <textarea data-soap-note-target="input" placeholder="The patient came in today complaining of..."></textarea>
+        
+        <button data-action="click->soap-note#generate" class="action-btn" data-soap-note-target="btn">
+          Generate SOAP note ↗
+          <div class="loader hidden" data-soap-note-target="loader"></div>
+        </button>
+      </section>
+      
+    </div>
+
+    <!-- Right Column: Generated SOAP Note -->
+    <div class="right-panel mscribe-panel">
+      <!-- Empty State before generation -->
+      <div data-soap-note-target="emptyState" class="empty-state soap-empty-state futuristic-empty">
+        <div class="scanner-line"></div>
+        <div class="soap-empty-grid">
+          <div class="soap-block subjective-block">
+            <h4 class="block-title subjective-title">SUBJECTIVE (S)</h4>
+            <div class="block-content empty-block futuristic-block">
+              <span class="pulse-text">[ AWAITING_INPUT ]</span>
+            </div>
+          </div>
+
+          <div class="soap-block objective-block">
+            <h4 class="block-title objective-title">OBJECTIVE (O)</h4>
+            <div class="block-content empty-block futuristic-block">
+              <span class="pulse-text">[ AWAITING_INPUT ]</span>
+            </div>
+          </div>
+
+          <div class="soap-block assessment-block">
+            <h4 class="block-title assessment-title">ASSESSMENT (A)</h4>
+            <div class="block-content empty-block futuristic-block">
+              <span class="pulse-text">[ AWAITING_INPUT ]</span>
+            </div>
+          </div>
+
+          <div class="soap-block plan-block">
+            <h4 class="block-title plan-title">PLAN (P)</h4>
+            <div class="block-content empty-block futuristic-block">
+              <span class="pulse-text">[ AWAITING_INPUT ]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generated Results Container -->
+      <div data-soap-note-target="resultContainer" class="hidden">
+        <div class="soap-header">
+          <div>
+            <h2 class="soap-title">SOAP note</h2>
+            <p class="soap-meta"><%= Date.today.strftime("%d %b %Y") %></p>
+          </div>
+          <div class="soap-actions">
+            <button class="icon-btn" data-action="click->soap-note#download">Download</button>
+            <button class="icon-btn">Edit</button>
+            <button class="icon-btn">Sign & save</button>
+          </div>
+        </div>
+
+        <div class="soap-body">
+          <div class="soap-block subjective-block">
+            <h4 class="block-title subjective-title">SUBJECTIVE (S)</h4>
+            <div class="block-content">
+              <div contenteditable="true" class="editable-field" data-soap-note-target="subjective">-</div>
+            </div>
+          </div>
+
+          <div class="soap-block objective-block">
+            <h4 class="block-title objective-title">OBJECTIVE (O)</h4>
+            <div class="block-content">
+              <div contenteditable="true" class="editable-field" data-soap-note-target="objective">-</div>
+            </div>
+          </div>
+
+          <div class="soap-block assessment-block">
+            <h4 class="block-title assessment-title">ASSESSMENT (A)</h4>
+            <div class="block-content">
+              <div contenteditable="true" class="editable-field" data-soap-note-target="assessment">-</div>
+            </div>
+          </div>
+
+          <div class="soap-block plan-block">
+            <h4 class="block-title plan-title">PLAN (P)</h4>
+            <div class="block-content">
+              <div contenteditable="true" class="editable-field" data-soap-note-target="plan">-</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

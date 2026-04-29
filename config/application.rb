@@ -25,6 +25,6 @@ module MedscribeApi
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Only loads a smaller set of middleware suitable for API only apps.
-    config.api_only = true
+    # config.api_only = true
   end
 end

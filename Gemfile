@@ -53,3 +53,9 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
+
+gem "propshaft", "~> 1.3"
+gem "importmap-rails", "~> 2.2"
+gem "turbo-rails", "~> 2.0"
+gem "stimulus-rails", "~> 1.3"
+gem "jbuilder", "~> 2.14"
